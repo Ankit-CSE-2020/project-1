@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+         *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+         }
+
+         .container{
+            max-width: 40vw;
+            margin: auto;
+            margin-top: 20vh;
+        
+
+         }
+
+         .form-box{
+            background-color: bisque;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            border-radius: 0.5rem;
+           
+         }
+
+         h1{
+            margin-bottom: 2vh;
+         }
+
+         .Luser, .Lemail ,.Lpassword{
+    
+            font-size: 2rem;
+
+
+
+         }
+
+         #user, #Email, #Password{
+            height: 6vh;
+            width: 20vw;
+       
+            margin-bottom: 2vh;
+            font-size: 1rem;
+            border-radius: 7px;
+         }
+         
+         .btndiv{
+            width: 10vw;
+            margin: auto;
+         }
+
+         .btn{
+            height: 6vh;
+            width: 10vw;
+            border-radius: 7px;      
+            cursor: pointer;
+            font-size: 1.1rem;
+         }  
+        
+         #error{
+            color: rgb(196, 26, 26);
+            margin-top: 1vh;
+         }
+         
+         .message{
+            background-color: bisque;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            width: 30vw;
+            margin: auto;
+         
+            
+   
+         }
+
+         .alert{
+            padding: 0.7rem;
+         }
+
+         .subMessage{
+            font-size:medium;
+         }
+         
+         .login{
+            display:inline-block;
+            text-decoration: none;
+            color: white;
+            background-color: rgb(36, 36, 151);
+            padding: 0.6rem 0.8rem; 
+            border-radius: 0.3rem;
+            margin-top: 1rem;
+
+           
+         }
+        
+      @media (max-width:650px){
+         .form-box{
+         width: 61vw;
+         }
+         .Luser, .Lemail ,.Lpassword{
+    
+            font-size: 1.5rem;
+
+         }
+         #user, #Email, #Password{
+            width: 30vw;
+
+         }
+
+         .btndiv{
+            width: 15vw;
+         }
+
+         .btn{
+            width: 15vw;
+            font-size: 1rem;
+         } 
+     
+      }
+
+     
+    </style>
+</head>
+<body>
+       <div class="container">
+            <div class="form-box" id="form">
+                <h1 id="#title">Sign up</h1>
+              <form action="/signup" method="post" >
+                    <label for="user" class="Luser">Name: </label>
+                    <br>
+                    <input type="text" id="user" name="username" placeholder="username" value="ram">
+                     <br>
+
+                    <label for="Email" class="Lemail">Email: </label>
+                    <br>
+                    <input type="email" name="useremail" id="Email" placeholder="abc@gmail.com">
+                    <br>
+
+                    <label for="Password" class="Lpassword">Password: </label>
+                    <br>
+                    <input type="password" name="userpassword" id="Password">
+                    <br>
+                    
+                    <div class="btndiv">
+                     <button class="btn" id="signup" type="submit" >Sign Up</button>
+                    </div>
+
+                </form>
+
+                <p id="error"></p>
+            </div>
+          </div>
+
+          
+          <!-- message -->
+        
+          <div class="returnMessage">
+              <div class="alert" ><h1>Alert Message</h1></div>
+              <div >
+               <p class="subMessage">" Account created, Please login "</p>
+              </div>
+              <div>
+              <a class="login" href="/login.html">Login</a>
+              </div>
+       </div>
+   
+
+
+  <script>
+          let user=document.getElementById('user');
+         let Email=document.getElementById('Email');
+         let Password=document.getElementById('Password');
+         let btn=document.getElementById('signup');
+         document.getElementsByClassName('returnMessage')[0].style.display='none';
+
+     
+         function createAccount(e){ 
+
+            e.preventDefault();
+
+          let name=user.value;
+          let email=Email.value;
+          let password=Password.value;
+
+          
+           let users=JSON.parse(localStorage.getItem('users')) || []; 
+          // localStorage.clear()
+          // console.log(localStorage.length);
+          let userExists=users.find(u=>u.email===email);
+
+          if(userExists){
+         
+              document.getElementById('error').innerText='This Email user also exists plese try different email';
+              console.log(users)
+          }
+          else{
+             const newUser={name , email ,password ,check:false};
+
+            users.push(newUser);
+            localStorage.setItem('users',JSON.stringify(users))
+           
+            console.log("hii",users);
+
+
+         
+           // console.log('name',users[0].name)
+           // console.log('email',users[0].email)
+           
+          document.getElementById('form').style.display="none"; 
+          document.getElementsByClassName('returnMessage')[0].style.display='flex';
+          document.getElementsByClassName('returnMessage')[0].setAttribute('class','message');
+
+          
+
+          }
+         }
+     
+
+         
+
+  </script>     
+</body>
+</html>

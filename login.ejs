@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+         *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+         }
+
+
+         
+        
+         .container{
+            max-width: 40vw;
+            margin: auto;
+            margin-top: 20vh;
+        
+
+         }
+
+         .form-box{
+            background-color: bisque;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+           border-radius: 0.5rem;
+         }
+
+         h1{
+            margin-bottom: 2vh;
+         }
+
+         .Luser, .Lemail ,.Lpassword{
+    
+            font-size: 2rem;
+
+
+
+         }
+
+         #Email, #Password{
+            height: 6vh;
+            width: 20vw;
+       
+            margin-bottom: 2vh;
+            font-size: 1rem;
+            border-radius: 7px;
+         }
+         
+         .btndiv{
+            width: 10vw;
+            margin: auto;
+         }
+
+         .btn{
+            height: 6vh;
+            width: 10vw;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 1.1rem;
+         }  
+        
+         
+         .message{
+           background-color: bisque;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            width: 30vw;
+            margin: auto;
+            margin-top: 10rem;
+    
+         }
+         .alert{
+            padding: 0.7rem;
+         }
+
+         .subMessage{
+            font-size:medium;
+         }
+         
+         .login{
+            display:inline-block;
+            text-decoration: none;
+            color: white;
+            background-color: rgb(36, 36, 151);
+            padding: 0.6rem 0.8rem; 
+            border-radius: 0.3rem;
+            margin-top: 1rem;
+           
+         }
+        
+
+         @media (max-width:650px){
+            .form-box{
+            width: 61vw;
+            }
+            .Luser, .Lemail ,.Lpassword{
+       
+               font-size: 1.5rem;
+   
+            }
+            #user, #Email, #Password{
+               width: 30vw;
+   
+            }
+   
+            .btndiv{
+               width: 15vw;
+            }
+   
+            .btn{
+               width: 15vw;
+               font-size: 1rem;
+            } 
+        
+         }
+
+     
+    </style>
+</head>
+<body>
+       <div class="container">
+            <div class="form-box" id="form">
+                <h1 id="#title">Sign In</h1>
+              <form action="/login" method="post" >
+                    <label for="Password" class="Lpassword">Name: </label>
+                   <br>
+                   <input type="text" name="username" id="Password">
+                   <br>
+                    <label for="Email" class="Lemail">Email: </label>
+                    <br>
+                    <input type="email" name="useremail" id="Email" placeholder="abc@gmail.com">
+                    <br>
+
+                    <label for="Password" class="Lpassword">Password: </label>
+                    <br>
+                    <input type="password" name="userpassword" id="Password">
+                    <br>
+                    
+                    <div class="btndiv">
+                        <button class="btn" id="signin" type="submit" >Sign In</button>
+
+                    </div>
+
+                </form>
+              </div>
+          </div>
+
+          
+          <!-- message -->
+          <div class="returnMessage">
+              <div class="alert" ><h1>Alert Message</h1></div>
+              <div >
+               <p class="subMessage">"Login fail, Please try again"</p>
+              </div>
+                <div>
+                <a class="login" href="/login.html">Login</a>
+               </div>
+          </div>
+
+
+
+       
+
+       <!-- <script src="/produvt.js"></script> -->
+
+        <!-- <script>
+   
+         let Email=document.getElementById('Email');
+         let Password=document.getElementById('Password');
+         let btn=document.getElementById('signin');
+         document.getElementsByClassName('returnMessage')[0].style.display='none';
+
+     
+         function login(e){ 
+            e.preventDefault();
+
+          let email=Email.value;
+          let password=Password.value;
+
+          let user=JSON.parse(localStorage.getItem('users')) || []; 
+          let userExists=user.find(u=>u.email===email && u.password===password);
+
+
+         // localStorage.removeItem('users')   // --users is key
+         // console.log(localStorage.length);
+        //  console.log('key',localStorage.key(0))
+
+          if(userExists){
+
+           if(userExists){
+                userExists.check=true;
+      
+                const updatedUserData=JSON.stringify(user);
+                localStorage.setItem('users',updatedUserData);
+                console.log('updated');
+           }
+           else{
+            console.log('not updated');
+           }
+           
+
+            console.log('final',user)
+           window.location.href='dashboard.html';
+
+          }
+          else{
+            console.log(user)
+       
+            document.getElementsByClassName('container')[0].style.display='none';
+            document.getElementsByClassName('returnMessage')[0].style.display='flex';
+          document.getElementsByClassName('returnMessage')[0].setAttribute('class','message');
+          
+
+          }
+         }
+
+        
+
+        </script>      -->
+</body>
+</html>
